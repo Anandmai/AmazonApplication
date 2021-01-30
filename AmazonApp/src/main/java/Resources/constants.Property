@@ -1,0 +1,9 @@
+deviceName= Galaxy S8
+platformVersion= 9
+ platformName= Android
+udid = 988939415555554f38
+appPackagename=com.amazon.mShop.android.shopping
+appActivityname=com.amazon.mShop.home.HomeActivity
+Screeshot_path = E:\\New folder\\screenshots
+Path_TestData = E:\\New folder\\AmazonApp\\src\\main\\java\\Resources
+File_TestData = TestData.xlsx

@@ -3,15 +3,13 @@
 <suite guice-stage="DEVELOPMENT" verbose="0" name="Failed suite [Suite]">
   <test thread-count="5" verbose="0" name="Amazon applictaion(failed)">
     <classes>
-      <class name="Pagesobjects.SearchProduct">
+      <class name="Test.SampleTest">
         <methods>
-          <include name="endReport"/>
-          <include name="beforeSuite"/>
-          <include name="searchanyproduct"/>
           <include name="beforetest"/>
           <include name="getResult"/>
+          <include name="searchanyproduct"/>
         </methods>
-      </class> <!-- Pagesobjects.SearchProduct -->
+      </class> <!-- Test.SampleTest -->
     </classes>
   </test> <!-- Amazon applictaion(failed) -->
 </suite> <!-- Failed suite [Suite] -->

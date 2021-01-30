@@ -15,7 +15,7 @@
   </properties>
 
  <build>
-  <testSourceDirectory>{$builddir}/src/test/java/</testSourceDirectory>
+  <testSourceDirectory>{$builddir}/src/main/java/</testSourceDirectory>
   
 		<plugins>
 			<plugin>

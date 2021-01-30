@@ -51,7 +51,7 @@
               <ul>
                 <li>
                   <a href="#" class="navigator-link " panel-name="test-xml-Suite">
-                    <span>E:\New folder\AmazonApp\TestNg.xml</span>
+                    <span>E:\Gitcommit\AmazonApp\TestNg.xml</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
@@ -104,7 +104,7 @@
                     <div class="method-list-content passed suite-Suite">
                       <span>
                         <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-Suite" title="Pagesobjects.SearchProduct" hash-for-method="searchanyproduct">searchanyproduct</a> <!-- method navigator-link -->
+                        <a href="#" class="method navigator-link" panel-name="suite-Suite" title="Test.SampleTest" hash-for-method="searchanyproduct">searchanyproduct</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content passed suite-Suite -->
@@ -122,7 +122,7 @@
           <div class="suite-Suite-class-passed">
             <div class="main-panel-header rounded-window-top">
               <img src="passed.png"/>
-              <span class="class-name">Pagesobjects.SearchProduct</span>
+              <span class="class-name">Test.SampleTest</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
@@ -137,7 +137,7 @@
         </div> <!-- panel Suite -->
         <div panel-name="test-xml-Suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">E:\New folder\AmazonApp\TestNg.xml</span>
+            <span class="header-content">E:\Gitcommit\AmazonApp\TestNg.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
@@ -146,8 +146,7 @@
 &lt;suite guice-stage=&quot;DEVELOPMENT&quot; verbose=&quot;0&quot; name=&quot;Suite&quot;&gt;
   &lt;test thread-count=&quot;5&quot; verbose=&quot;0&quot; name=&quot;Amazon applictaion&quot;&gt;
     &lt;classes&gt;
-      &lt;class name=&quot;Pagesobjects.MainDriver&quot;/&gt;
-      &lt;class name=&quot;Pagesobjects.SearchProduct&quot;/&gt;
+      &lt;class name=&quot;Test.SampleTest&quot;/&gt;
     &lt;/classes&gt;
   &lt;/test&gt; &lt;!-- Amazon applictaion --&gt;
 &lt;/suite&gt; &lt;!-- Suite --&gt;
@@ -161,7 +160,7 @@
           <div class="main-panel-content rounded-window-bottom">
             <ul>
               <li>
-                <span class="test-name">Amazon applictaion (2 classes)</span>
+                <span class="test-name">Amazon applictaion (1 class)</span>
               </li>
             </ul>
           </div> <!-- main-panel-content rounded-window-bottom -->
@@ -190,8 +189,8 @@ data.addColumn('number', 'Time (ms)');
 data.addRows(1);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'searchanyproduct')
-data.setCell(0, 2, 'Pagesobjects.SearchProduct')
-data.setCell(0, 3, 163789);
+data.setCell(0, 2, 'Test.SampleTest')
+data.setCell(0, 3, 126961);
 window.suiteTableData['Suite']= { tableData: data, tableDiv: 'times-div-Suite'}
 return data;
 }
@@ -211,18 +210,9 @@ return data;
         </div> <!-- panel -->
         <div panel-name="ignored-methods-Suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">2 ignored methods</span>
+            <span class="header-content">0 ignored methods</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
-            <div class="ignored-class-div">
-              <span class="ignored-class-name">Pagesobjects.SearchProduct</span>
-              <div class="ignored-methods-div">
-                <span class="ignored-method-name">endReport</span>
-                <br/>
-                <span class="ignored-method-name">beforeSuite</span>
-                <br/>
-              </div> <!-- ignored-methods-div -->
-            </div> <!-- ignored-class-div -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
         <div panel-name="chronological-Suite" class="panel">
@@ -231,33 +221,19 @@ return data;
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="chronological-class">
-              <div class="chronological-class-name">Pagesobjects.MainDriver</div> <!-- chronological-class-name -->
-              <div class="configuration-suite before">
-                <span class="method-name">beforeSuite</span>
-                <span class="method-start">0 ms</span>
-              </div> <!-- configuration-suite before -->
-            </div> <!-- chronological-class -->
-            <div class="chronological-class">
-              <div class="chronological-class-name">Pagesobjects.SearchProduct</div> <!-- chronological-class-name -->
+              <div class="chronological-class-name">Test.SampleTest</div> <!-- chronological-class-name -->
               <div class="configuration-test before">
                 <span class="method-name">beforetest</span>
-                <span class="method-start">31330 ms</span>
+                <span class="method-start">0 ms</span>
               </div> <!-- configuration-test before -->
               <div class="test-method">
                 <span class="method-name">searchanyproduct</span>
-                <span class="method-start">31390 ms</span>
+                <span class="method-start">33730 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
-                <span class="method-name">getResult([TestResult name=searchanyproduct status=SUCCESS method=SearchProduct.searchanyproduct()[pri:0, inst...)</span>
-                <span class="method-start">195182 ms</span>
+                <span class="method-name">getResult([TestResult name=searchanyproduct status=SUCCESS method=SampleTest.searchanyproduct()[pri:0, instanc...)</span>
+                <span class="method-start">160694 ms</span>
               </div> <!-- configuration-method after -->
-            </div> <!-- chronological-class -->
-            <div class="chronological-class">
-              <div class="chronological-class-name">Pagesobjects.MainDriver</div> <!-- chronological-class-name -->
-              <div class="configuration-suite after">
-                <span class="method-name">endReport</span>
-                <span class="method-start">195897 ms</span>
-              </div> <!-- configuration-suite after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
       </div> <!-- main-panel-root -->

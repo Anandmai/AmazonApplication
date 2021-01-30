@@ -1,42 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="2" total="3" passed="1">
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Suite" duration-ms="164537" started-at="2021-01-29T00:59:33 IST" finished-at="2021-01-29T01:02:17 IST">
+  <suite name="Suite" duration-ms="161346" started-at="2021-01-30T23:14:14 IST" finished-at="2021-01-30T23:16:55 IST">
     <groups>
     </groups>
-    <test name="Amazon applictaion" duration-ms="164537" started-at="2021-01-29T00:59:33 IST" finished-at="2021-01-29T01:02:17 IST">
-      <class name="Pagesobjects.MainDriver">
-        <test-method status="PASS" signature="beforeSuite()[pri:0, instance:Pagesobjects.MainDriver@5a8e6209]" name="beforeSuite" is-config="true" duration-ms="31327" started-at="2021-01-29T00:59:01 IST" finished-at="2021-01-29T00:59:33 IST">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- beforeSuite -->
-        <test-method status="PASS" signature="endReport()[pri:0, instance:Pagesobjects.MainDriver@5a8e6209]" name="endReport" is-config="true" duration-ms="0" started-at="2021-01-29T01:02:17 IST" finished-at="2021-01-29T01:02:17 IST">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- endReport -->
-      </class> <!-- Pagesobjects.MainDriver -->
-      <class name="Pagesobjects.SearchProduct">
-        <test-method status="PASS" signature="beforetest()[pri:0, instance:Pagesobjects.SearchProduct@4b4523f8]" name="beforetest" is-config="true" duration-ms="1" started-at="2021-01-29T00:59:33 IST" finished-at="2021-01-29T00:59:33 IST">
+    <test name="Amazon applictaion" duration-ms="161346" started-at="2021-01-30T23:14:14 IST" finished-at="2021-01-30T23:16:55 IST">
+      <class name="Test.SampleTest">
+        <test-method status="PASS" signature="beforetest()[pri:0, instance:Test.SampleTest@23e028a9]" name="beforetest" is-config="true" duration-ms="33688" started-at="2021-01-30T23:14:14 IST" finished-at="2021-01-30T23:14:48 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforetest -->
-        <test-method status="PASS" signature="searchanyproduct()[pri:0, instance:Pagesobjects.SearchProduct@4b4523f8]" name="searchanyproduct" duration-ms="163789" started-at="2021-01-29T00:59:33 IST" finished-at="2021-01-29T01:02:16 IST">
+        <test-method status="PASS" signature="searchanyproduct()[pri:0, instance:Test.SampleTest@23e028a9]" name="searchanyproduct" duration-ms="126961" started-at="2021-01-30T23:14:48 IST" finished-at="2021-01-30T23:16:55 IST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- searchanyproduct -->
-        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:Pagesobjects.SearchProduct@4b4523f8]" name="getResult" is-config="true" duration-ms="679" started-at="2021-01-29T01:02:16 IST" finished-at="2021-01-29T01:02:17 IST">
+        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:Test.SampleTest@23e028a9]" name="getResult" is-config="true" duration-ms="637" started-at="2021-01-30T23:16:55 IST" finished-at="2021-01-30T23:16:55 IST">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=searchanyproduct status=SUCCESS method=SearchProduct.searchanyproduct()[pri:0, instance:Pagesobjects.SearchProduct@4b4523f8] output={null}]]]>
+                <![CDATA[[TestResult name=searchanyproduct status=SUCCESS method=SampleTest.searchanyproduct()[pri:0, instance:Test.SampleTest@23e028a9] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getResult -->
-      </class> <!-- Pagesobjects.SearchProduct -->
+      </class> <!-- Test.SampleTest -->
     </test> <!-- Amazon applictaion -->
   </suite> <!-- Suite -->
 </testng-results>
