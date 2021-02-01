@@ -58,28 +58,30 @@
 		public static String Imagepath="";
 		public static Properties properties;
 		private final static String constantproperties= System.getProperty("user.dir")+("\\src\\main\\java\\Resources\\constants.Property") ; 	
-		
+	
 		public static	String Search_button="com.amazon.mShop.android.shopping:id/rs_search_src_text";
 		/* Description: Reusable Method to Click
 		 * Created By: Anand Mai 
 		 * Attribute: String object passed for id or xpath		  
 		 * 			  Report:Logger extent report
 		 */
-		public static void click(String object){
+		public  void click(String object){
+			try {
+				if(driver.findElement(By.xpath(properties.getProperty(object))).isDisplayed()) {
+					logger = extent.startTest("Clicked on"+object);
+					driver.findElement(By.xpath(properties.getProperty(object))).click();
+					Imagepath =	Resusablemethods.screenshot(properties.getProperty("Screeshot_path"));
+					logger.log(LogStatus.PASS,logger.addScreenCapture(Imagepath) );							
+					Assert.assertTrue(true);
+				} 
+			}
+			catch (Exception e) {
+				e.printStackTrace();
+				Assert.assertTrue(false );
+				logger.log(LogStatus.FAIL,logger.addScreenCapture(Imagepath) );		
+				logger.log(LogStatus.FAIL,e.getMessage() );				
+			}	
 	
-			if(driver.findElement(By.xpath(properties.getProperty(object))).isDisplayed()) {
-				logger = extent.startTest("Clicked on"+object);
-				driver.findElement(By.xpath(properties.getProperty(object))).click();
-				Imagepath =	Resusablemethods.screenshot(properties.getProperty("Screeshot_path"));
-				logger.log(LogStatus.PASS,logger.addScreenCapture(Imagepath) );							
-				Assert.assertTrue(true);
-				extent.endTest(logger);
-			} 
-			else{
-				logger.log(LogStatus.PASS,logger.addScreenCapture(Imagepath) );							
-				Assert.assertTrue(false);
-				logger.log(LogStatus.FAIL, "Not clicked");					
-			}					 
 		}
 	
 		/* Description: Reusable Method to get screenshot
@@ -97,11 +99,15 @@
 				String Imagepath = "./screenshots/" + targetFile.getName();
 				return Imagepath;
 				//return targetfile.getname;
-			}
-			catch (IOException e) {
+			}		
+			catch (Exception e) {
 				e.printStackTrace();
-				return Imagepath;}
-		}
+				Assert.assertTrue(false );
+				logger.log(LogStatus.FAIL,logger.addScreenCapture(Imagepath) );	
+				logger.log(LogStatus.FAIL,e.getMessage() );				
+			}	
+			return Imagepath;}
+	
 	
 		/* Description: Reusable function to get result
 		 * Created By: Anand Mai 
@@ -123,17 +129,21 @@
 		 * 			  Report:Logger extent report
 		 */
 		public static void clickbyname(String object){	
-			if(driver.findElementByName(object).isDisplayed()){
+			try{if(driver.findElementByName(object).isDisplayed()){
 				logger = extent.startTest("Clicked on"+object);
 	
 				driver.findElementByName(object).click();
 				Assert.assertTrue(true);
 				logger.log(LogStatus.PASS, "Clicked successfully");
-				extent.endTest(logger);			 
+				logger.log(LogStatus.PASS,logger.addScreenCapture(Imagepath) );		 
 			} 
-			else{
-				logger.log(LogStatus.FAIL, "Not clicked");			
 			}
+			catch (Exception e) {
+				e.printStackTrace();
+				Assert.assertTrue(false );
+				logger.log(LogStatus.FAIL,logger.addScreenCapture(Imagepath) );	
+				logger.log(LogStatus.FAIL,e.getMessage() );				
+			}	
 	
 		}
 	
@@ -142,21 +152,24 @@
 		 * Attribute:  String object passed for id   
 		 * 			  Report:Logger extent report
 		 */
-		public static void clickbyid(String object){		
-			if(driver.findElementById(object).isDisplayed()){
-				logger = extent.startTest("Clicked on"+object);		
-				driver.findElementById(object).click();
-				Assert.assertTrue(true);
-				logger.log(LogStatus.PASS, "Clicked successfully");
-				Imagepath =	Resusablemethods.screenshot(properties.getProperty("Screeshot_path"));
-				logger.log(LogStatus.PASS,logger.addScreenCapture(Imagepath) );
-				//logger.log(LogStatus.PASS,logger.addScreenCapture(Imagepath) );
-				extent.endTest(logger);
-			} 
-			else{
-				logger.log(LogStatus.FAIL, "Not clicked");
+		public static  void clickbyid(String object){
+			try {
+				if(driver.findElementById(object).isDisplayed()){
+					logger = extent.startTest("Clicked on"+object);		
+					driver.findElementById(object).click();
+					Assert.assertTrue(true);
+					logger.log(LogStatus.PASS, "Clicked successfully");
+					Imagepath =	Resusablemethods.screenshot(properties.getProperty("Screeshot_path"));
+					logger.log(LogStatus.PASS,logger.addScreenCapture(Imagepath) );
+					//logger.log(LogStatus.PASS,logger.addScreenCapture(Imagepath) );
+					extent.endTest(logger);
 	
-			}
+				} }
+			catch (Exception e) {
+				e.printStackTrace();
+				Assert.assertTrue(false );
+				logger.log(LogStatus.FAIL,e.getMessage() );				
+			}	
 		}
 	
 		/* Description: Reusable Method to sendkeysbyID
@@ -164,20 +177,26 @@
 		 * Attribute:  String object passed for id   
 		 * 			  Report:Logger extent report
 		 */
-		public static  void sendkeysbyID(String object,String data){	
-			if(driver.findElementById(object).isDisplayed()){
-				logger = extent.startTest("Clicked on"+object);		
-				driver.findElementById(object).sendKeys(data);
-				Assert.assertTrue(true);
-				logger.log(LogStatus.PASS, "Clicked successfully");
+		public static  void sendkeysbyID(String object,String data){
+			try {
+				if(driver.findElementById(object).isDisplayed()){
+					logger = extent.startTest("Clicked on"+object);		
+					driver.findElementById(object).sendKeys(data);
+					Assert.assertTrue(true);
+					logger.log(LogStatus.PASS, "Clicked successfully");
 	
-				Imagepath =	Resusablemethods.screenshot(properties.getProperty("Screeshot_path"));
-				logger.log(LogStatus.PASS,logger.addScreenCapture(Imagepath) );
-				extent.endTest(logger);
-			} 
-			else{
-				logger.log(LogStatus.FAIL, "Not clicked");			
-			}				
+					Imagepath =	Resusablemethods.screenshot(properties.getProperty("Screeshot_path"));
+					logger.log(LogStatus.PASS,logger.addScreenCapture(Imagepath) );
+					extent.endTest(logger);
+				} 
+			}
+			catch (Exception e) {
+				e.printStackTrace();
+				Assert.assertTrue(false );
+				logger.log(LogStatus.FAIL,logger.addScreenCapture(Imagepath) );
+				logger.log(LogStatus.FAIL,e.getMessage() );				
+			}	
+	
 		}
 	
 		/* Description: Reusable Method to sendkeysbyID
@@ -186,18 +205,21 @@
 		 * 			  Report:Logger extent report
 		 */
 		public void sendkeysbyxpath(String object,String data){
-	
-			if(driver.findElementByXPath(object).isDisplayed()){
-				logger = extent.startTest("Clicked on"+object);		
-				driver.findElementByXPath(object).sendKeys(data);
-				Assert.assertTrue(true);
-				logger.log(LogStatus.PASS, "Clicked successfully");			
-				Imagepath =	Resusablemethods.screenshot(properties.getProperty("Screeshot_path"));
-				logger.log(LogStatus.PASS,logger.addScreenCapture(Imagepath) );
-				extent.endTest(logger);
-			} 
-			else{
-				logger.log(LogStatus.FAIL, "Not clicked");			
+			try {
+				if(driver.findElementByXPath(object).isDisplayed()){
+					logger = extent.startTest("Clicked on"+object);		
+					driver.findElementByXPath(object).sendKeys(data);
+					Assert.assertTrue(true);
+					logger.log(LogStatus.PASS, "Clicked successfully");			
+					Imagepath =	Resusablemethods.screenshot(properties.getProperty("Screeshot_path"));
+					logger.log(LogStatus.PASS,logger.addScreenCapture(Imagepath) );
+					extent.endTest(logger);
+				} }
+			catch (Exception e) {
+				e.printStackTrace();
+				Assert.assertTrue(false );
+				logger.log(LogStatus.FAIL,logger.addScreenCapture(Imagepath) );
+				logger.log(LogStatus.FAIL,e.getMessage() );				
 			}	
 		}
 	
@@ -207,19 +229,23 @@
 		 * 			  Report:Logger extent report
 		 */
 		public static void clickbyxpath(String object){
-			if(driver.findElementByXPath(object).isDisplayed()){
-				logger = extent.startTest("Clicked on"+object);		
-				driver.findElementByXPath(object).click();;
-				Assert.assertTrue(true);
-				logger.log(LogStatus.PASS, "Clicked successfully");
-				Imagepath =	Resusablemethods.screenshot(properties.getProperty("Screeshot_path"));
-				logger.log(LogStatus.PASS,logger.addScreenCapture(Imagepath) );
+			try {
+				if(driver.findElementByXPath(object).isDisplayed()){
+					logger = extent.startTest("Clicked on"+object);		
+					driver.findElementByXPath(object).click();;
+					Assert.assertTrue(true);
+					logger.log(LogStatus.PASS, "Clicked successfully");
+					Imagepath =	Resusablemethods.screenshot(properties.getProperty("Screeshot_path"));
+					logger.log(LogStatus.PASS,logger.addScreenCapture(Imagepath) );
 	
-				extent.endTest(logger);
-			} 
-			else{
-				logger.log(LogStatus.FAIL, "Not clicked");			
-			}	
+					extent.endTest(logger);
+				} 
+			}
+			catch (Exception e) {
+				e.printStackTrace();
+				Assert.assertTrue(false );
+				logger.log(LogStatus.FAIL,e.getMessage() );		
+			}
 	
 		}
 		/* Description: Reusable Method to clickbyxpath
@@ -228,20 +254,24 @@
 		 * 			  Report:Logger extent report
 		 */
 		public static void sendkeysbyname(String object,String data){
-			if(driver.findElementByName(object).isDisplayed()){
-				logger = extent.startTest("Clicked on"+object);		
-				driver.findElementByName(object).sendKeys(data);
-				Assert.assertTrue(true);
-				logger.log(LogStatus.PASS, "Clicked successfully");
-				Imagepath =	Resusablemethods.screenshot(properties.getProperty("Screeshot_path"));
-				logger.log(LogStatus.PASS,logger.addScreenCapture(Imagepath) );
+			try {
+				if(driver.findElementByName(object).isDisplayed()){
+					logger = extent.startTest("Clicked on"+object);		
+					driver.findElementByName(object).sendKeys(data);
+					Assert.assertTrue(true);
+					logger.log(LogStatus.PASS, "Clicked successfully");
+					Imagepath =	Resusablemethods.screenshot(properties.getProperty("Screeshot_path"));
+					logger.log(LogStatus.PASS,logger.addScreenCapture(Imagepath) );
 	
-				extent.endTest(logger);
-			} 
-			else{
-				logger.log(LogStatus.FAIL, "Not clicked");	
+					extent.endTest(logger);
+				} 
+			}
+			catch (Exception e) {
+				e.printStackTrace();
+				Assert.assertTrue(false );
 				Imagepath =	Resusablemethods.screenshot(properties.getProperty("Screeshot_path"));
-				logger.log(LogStatus.PASS,logger.addScreenCapture(Imagepath) );
+				logger.log(LogStatus.FAIL,logger.addScreenCapture(Imagepath) );
+				logger.log(LogStatus.FAIL,e.getMessage() );		
 			}
 		}
 		/* Description: Reusable Method to getproduct detils
@@ -251,7 +281,7 @@
 		 */
 	
 		public static String getProductDetails(String object) {
-			//String provalue=properties.getProperty("")
+	
 	
 			try {
 				textValue = driver.findElementByXPath(object).getText();
@@ -265,8 +295,8 @@
 				return textValue;
 			} catch (Exception e) {
 				e.printStackTrace();
-				Assert.assertTrue(false);
-				logger.log(LogStatus.FAIL, "Not clicked");	
+				Assert.assertTrue(false );
+				logger.log(LogStatus.FAIL,e.getMessage() );		
 			}
 			return textValue;
 		}
@@ -278,17 +308,19 @@
 				String Productname1 = ExcelReadData.getMapData("Productname");	
 				System.out.println("Value of the keyword (search) is- "+Productname1);	
 				Resusablemethods.sendkeysbyID(Search_button, Productname1);	
+	
 			}
-
-			 catch (Exception e) {
+	
+			catch (Exception e) {
 				e.printStackTrace();
-				
+				Assert.assertTrue(false );
+				logger.log(LogStatus.FAIL,e.getMessage() );	
 			}
-			
+	
 		}
 	
-		
-		
+	
+	
 		/* Description: Reusable Method to Press  at given co-ordinates
 		 * Created By: Anand Mai 
 		 * Attribute:  x,y,seconds-codinates on the screen and time in seconds   
@@ -303,7 +335,9 @@
 				.perform();
 			}
 			catch(Exception e){
-				System.out.println("Object Tapped");
+				e.printStackTrace();
+				Assert.assertTrue(false );
+				logger.log(LogStatus.FAIL,e.getMessage() );	
 			}
 		}
 		/* Description: Reusable Method to swipe by giving percentages
@@ -312,45 +346,52 @@
 		 * 			  Report:Logger extent report
 		 */
 		public void verticalSwipeByPercentage (double startPercentage, double endPercentage, double anchorPercentage) {
-			Dimension size = driver.manage().window().getSize();
-			int anchor = (int) (size.height * anchorPercentage);
-			int startPoint = (int) (size.width * startPercentage);
-			int endPoint = (int) (size.width * endPercentage);
+			try{
+				Dimension size = driver.manage().window().getSize();
+				int anchor = (int) (size.height * anchorPercentage);
+				int startPoint = (int) (size.width * startPercentage);
+				int endPoint = (int) (size.width * endPercentage);
 	
-			new TouchAction(driver)
-			.press(point(startPoint, anchor))
-			.waitAction(waitOptions(ofMillis(1000)))
-			.moveTo(point(endPoint, anchor))
-			.release().perform();
+				new TouchAction(driver)
+				.press(point(startPoint, anchor))
+				.waitAction(waitOptions(ofMillis(1000)))
+				.moveTo(point(endPoint, anchor))
+				.release().perform();
+			}
+			catch(Exception e){
+				e.printStackTrace();
+				Assert.assertTrue(false );
+				logger.log(LogStatus.FAIL,e.getMessage() );	
+			}
 		}
-		
+	
 		/* Description: Reusable Method to swipe
 		 * Created By: Anand Mai 
 		 * Attribute:  startElement,endElement 
 		 * 			  Report:Logger extent report
 		 */
 		public static void swipeFullFromTopToBottom() {
-
+	
 			try {
 				Thread.sleep(2000);
 				Dimension scrnSize = driver.manage().window().getSize();
 				int startx = (int) (scrnSize.width / 2);
 				int endy = (int) (scrnSize.height*0.9);
 				int starty = (int) (scrnSize.height * 0.2);
-
-
+	
+	
 				(new TouchAction(driver))
 				.press(point(startx, starty))
 				.moveTo(point(startx, starty))
 				.release()
 				.perform();
-
+				Assert.assertTrue(true);
+				logger.log(LogStatus.PASS,"Swipe action completed" );
 			} catch (InterruptedException e) {
-				Assert.assertTrue(false,e.getMessage());
+				Assert.assertTrue(false);
+				logger.log(LogStatus.FAIL,e.getMessage() );
 			}
-
-
-
+	
 		}
 	
 		/* Description: Reusable Method to Tap  at given co-ordinates
@@ -369,7 +410,8 @@
 				System.out.println("Object Tapped");			
 			}
 			catch(Exception e){
-				System.out.println("Object Tapped");
+				Assert.assertTrue(false);
+				logger.log(LogStatus.FAIL,e.getMessage() );
 			}
 		}
 	
@@ -385,7 +427,8 @@
 			}
 			catch(Exception e){
 	
-				System.out.println("Unknown exception");
+				Assert.assertTrue(false);
+				logger.log(LogStatus.FAIL,e.getMessage() );
 			}
 		}
 		/* Description: Reusable Method to rotate screen
@@ -401,8 +444,10 @@
 				System.out.println("device rotated");
 			}catch(Exception e)
 			{
+	
+				e.printStackTrace();
 				Assert.assertTrue(false);
-				logger.log(LogStatus.FAIL, "Not clicked");				
+				logger.log(LogStatus.FAIL,e.getMessage() );
 			}
 		}
 		/* Description: Reusable Method for Wait
@@ -417,7 +462,7 @@
 			}catch(Exception e)
 			{
 				Assert.assertTrue(false);
-				logger.log(LogStatus.FAIL, "Not clicked");				
+				e.printStackTrace();				
 			}
 		}
 	
@@ -435,7 +480,8 @@
 			catch(Exception e)
 			{
 				Assert.assertTrue(false);
-				logger.log(LogStatus.FAIL, "Not clicked");				
+				e.printStackTrace();	
+				logger.log(LogStatus.FAIL,e.getMessage() );
 			}
 		}
 		/* Description: Reusable Method to Start extent reports
@@ -481,13 +527,14 @@
 			}   	 	
 			catch(Exception e)
 			{
-				Assert.assertTrue(false);
-				logger.log(LogStatus.FAIL, "Not clicked");	
+				Assert.assertTrue(false);				
 				e.printStackTrace();
+				logger.log(LogStatus.FAIL,e.getMessage() );
 				return;
 	
 			}
 		}
+	
 	
 		/* Description: Reusable Method to read porperties file
 		 * Created By: Anand Mai 
@@ -508,7 +555,9 @@
 				}
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();		
+				logger.log(LogStatus.FAIL,e.getMessage() );
 				throw new RuntimeException("Configuration.properties not found at " + constantproperties);
+	
 			}
 		}	
 	}

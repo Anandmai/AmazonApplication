@@ -36,6 +36,7 @@ import Utility.ExcelReadData;
 					Resusablemethods.enterproductname();
 					
 					Resusablemethods.Wait();	
+					
 					System.out.println("Product Search completed Successfully");		
 					logger = extent.startTest("passTest");
 					Assert.assertTrue(true); 
