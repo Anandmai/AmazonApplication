@@ -17,39 +17,31 @@ import Utility.Resusablemethods;
 import io.appium.java_client.android.AndroidDriver;
 import Utility.ExcelReadData;
 	   public class LoginPage extends Utility.Resusablemethods {
-		   
+		 //Element declaration
 		   public static String signin ="com.amazon.mShop.android.shopping:id/skip_sign_in_button";
+		   /*
+			 * Description: Method to Login
+			 * Created By: AnandMai
+			 * 
+			 */
 			
 			public static void ApplicationLogin()
 			{																	
-				try {
-							
-					
-					Resusablemethods method =new Resusablemethods();
-					/* Description: calling Reusable Method to Click and Signin
-					 * Created By: Anand Mai 
-					 * Attribute: report- Class object of Reporting to generate extent report
-					 * 			  
-					 */ 
-
-				     method.clickbyid(signin);
-					Thread.sleep(10000);
-				    // method.wait();	
+						
+					Resusablemethods.clickbyid(signin);
+						
 				     
-					System.out.println("Product Searched Successfully");		
+					System.out.println("Login completed Successfully");		
 					logger = extent.startTest("passTest");
-				    Assert.assertTrue(true); 
-				    logger.log(LogStatus.PASS, "Login Testcases Passed");
-				    method.Takescreenshot();
+					Assert.assertTrue(true); 
+					logger.log(LogStatus.PASS, "Login Testcases Passed");
 				}
 				
-				catch (Exception e) {			
-					e.printStackTrace();
-				}
+				
 							
-			    
+	   
 		}
 			
-	   }
+	   
 	   
 	   

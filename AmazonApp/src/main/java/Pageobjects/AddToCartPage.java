@@ -12,58 +12,37 @@ import Utility.Resusablemethods;
 		public static  String add_cart="//*[@resource-id='a-autoid-2']//*[@class='android.widget.Button']";
 		public static  String viewcart="com.amazon.mShop.android.shopping:id/action_bar_cart_image";
 		public static  String productdetails= "//*[contains(@text,'JBL C100SI In-Ear Deep Bass Headphones with Mic (Black)')]";
-		
+		  /*
+		 * Description: Method to Ad Product to cart
+		 * Created By: AnandMai
+		 * 
+		 */
 		public static void addtocart()
 		{	
 			
-			try {	
 				
-				Resusablemethods method =new Resusablemethods();
-				/* Description: calling Reusable Method to Click and selectedProduct
-				 * Created By: Anand Mai 
-				 *
-				 * 			  
-				 */ 
-				method.clickbyxpath(selectproduct);
+	
+				Resusablemethods.clickbyxpath(selectproduct);
 			
-				/* Description: calling Reusable Method to  Click on the product
-				 * Created By: Anand Mai 
-				 *
-				 * 			  
-				 */
-				method.clickbyxpath(selectpro);
+	
+				Resusablemethods.clickbyxpath(selectpro);
 				
-				/* Description:calling Reusable Method to getproduct details
-				 * Created By: Anand Mai 
-				 *
-				 * 			  
-				 */
-				method.getProductDetails(productdetails);
-				Thread.sleep(10000);
-				/* Description:calling Reusable Method to swipe
-				 * Created By: Anand Mai 
-				 *
-				 * 			  
-				 */
-				method.swipeFullFromTopToBottom();
-				/* Description:calling Reusable Method to click and add the product to cart
-				 * Created By: Anand Mai 
-				 *
-				 * 			  
-				 */
-				method.clickbyxpath(add_cart);
+				
+				Resusablemethods.getProductDetails(productdetails);
+				
+				
+				Resusablemethods.swipeFullFromTopToBottom();
+				
+				Resusablemethods.clickbyxpath(add_cart);
 				
 				 System.out.println("Product Added to cart Successfully");				
 			 		logger = extent.startTest("passTest");
 			 	    Assert.assertTrue(true);
 			 	    logger.log(LogStatus.PASS, "Add to Cart Testcases Passed");
-			 	   method.Takescreenshot();						
+			 	   Resusablemethods.Takescreenshot();						
 			}		
-			catch (Exception e) {			
-				e.printStackTrace();
-			}
 			
 		    
 	}
-	}
+	
 	

@@ -57,8 +57,9 @@
 		public static String textValue = "";
 		public static String Imagepath="";
 		public static Properties properties;
-		private final String constantproperties= System.getProperty("user.dir")+("\\src\\main\\java\\Resources\\constants.Property") ; 	
-	
+		private final static String constantproperties= System.getProperty("user.dir")+("\\src\\main\\java\\Resources\\constants.Property") ; 	
+		
+		public static	String Search_button="com.amazon.mShop.android.shopping:id/rs_search_src_text";
 		/* Description: Reusable Method to Click
 		 * Created By: Anand Mai 
 		 * Attribute: String object passed for id or xpath		  
@@ -141,7 +142,7 @@
 		 * Attribute:  String object passed for id   
 		 * 			  Report:Logger extent report
 		 */
-		public void clickbyid(String object){		
+		public static void clickbyid(String object){		
 			if(driver.findElementById(object).isDisplayed()){
 				logger = extent.startTest("Clicked on"+object);		
 				driver.findElementById(object).click();
@@ -163,7 +164,7 @@
 		 * Attribute:  String object passed for id   
 		 * 			  Report:Logger extent report
 		 */
-		public  void sendkeysbyID(String object,String data){	
+		public static  void sendkeysbyID(String object,String data){	
 			if(driver.findElementById(object).isDisplayed()){
 				logger = extent.startTest("Clicked on"+object);		
 				driver.findElementById(object).sendKeys(data);
@@ -205,7 +206,7 @@
 		 * Attribute:  String object passed for Xpath   
 		 * 			  Report:Logger extent report
 		 */
-		public void clickbyxpath(String object){
+		public static void clickbyxpath(String object){
 			if(driver.findElementByXPath(object).isDisplayed()){
 				logger = extent.startTest("Clicked on"+object);		
 				driver.findElementByXPath(object).click();;
@@ -249,7 +250,7 @@
 		 * 			  Report:Logger extent report
 		 */
 	
-		public String getProductDetails(String object) {
+		public static String getProductDetails(String object) {
 			//String provalue=properties.getProperty("")
 	
 			try {
@@ -270,6 +271,24 @@
 			return textValue;
 		}
 	
+		public static void enterproductname() {
+			//String provalue=properties.getProperty("")
+	
+			try {
+				String Productname1 = ExcelReadData.getMapData("Productname");	
+				System.out.println("Value of the keyword (search) is- "+Productname1);	
+				Resusablemethods.sendkeysbyID(Search_button, Productname1);	
+			}
+
+			 catch (Exception e) {
+				e.printStackTrace();
+				
+			}
+			
+		}
+	
+		
+		
 		/* Description: Reusable Method to Press  at given co-ordinates
 		 * Created By: Anand Mai 
 		 * Attribute:  x,y,seconds-codinates on the screen and time in seconds   
@@ -310,7 +329,7 @@
 		 * Attribute:  startElement,endElement 
 		 * 			  Report:Logger extent report
 		 */
-		public void swipeFullFromTopToBottom() {
+		public static void swipeFullFromTopToBottom() {
 
 			try {
 				Thread.sleep(2000);
@@ -408,7 +427,7 @@
 		 * 			  
 		 */
 	
-		public void Takescreenshot() {
+		public static void Takescreenshot() {
 			try {
 				Imagepath =	Resusablemethods.screenshot(properties.getProperty("Screeshot_path"));
 				logger.log(LogStatus.PASS,logger.addScreenCapture(Imagepath) );
@@ -425,7 +444,7 @@
 		 * 			  
 		 */
 	
-		public void startextentreports() {
+		public static void startextentreports() {
 			extent = new ExtentReports (System.getProperty("user.dir") +"/test-output/testextentreports.html", true);	
 			extent
 			.addSystemInfo("Host Name", "Amazon App")
@@ -440,7 +459,7 @@
 		 * 			  
 		 */
 	
-		public  void capabilities() {
+		public static  void capabilities() {
 			try
 			{
 	
@@ -476,7 +495,7 @@
 		 * 			  
 		 */
 	
-		public void readproperties() {
+		public static void readproperties() {
 			BufferedReader reader;
 			try {
 				reader = new BufferedReader(new FileReader(constantproperties));

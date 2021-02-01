@@ -18,43 +18,31 @@ import Utility.Resusablemethods;
 import io.appium.java_client.android.AndroidDriver;
 import Utility.ExcelReadData;
 	   public class SearchProductPage extends Utility.Resusablemethods {
-			
+		 //Element declaration
 		   public static String signin ="com.amazon.mShop.android.shopping:id/skip_sign_in_button";
 			public static	String Search_button="com.amazon.mShop.android.shopping:id/rs_search_src_text";
+			/*
+			 * Description: Method to Search a Product
+			 * Created By: AnandMai
+			 * 
+			 */
 			public static void searchanyproduct()
 			{																	
-				try {
 							
-					String Productname1 = ExcelReadData.getMapData("Productname");	
-					System.out.println("Value of the keyword (search) is- "+Productname1);	
-					Resusablemethods method =new Resusablemethods();
-					/* Description: calling Reusable Method to Click 
-					 * Created By: Anand Mai 
-					 *							  
-					 */ 
-					method.clickbyid(Search_button);
+					Resusablemethods.clickbyid(Search_button);
 					
-					method.wait();					
-					/* Description: calling Reusable Method to Click and send input
-					 * Created By: Anand Mai 
-					 * Attribute: Input ProductName
-					 * 			  
-					 */ 
-					method.sendkeysbyID(Search_button, Productname1);	
-					//Thread.sleep(10000);
-					System.out.println("Product Searched Successfully");		
+					Resusablemethods.Wait();		
+					
+					Resusablemethods.enterproductname();
+					
+					Resusablemethods.Wait();	
+					System.out.println("Product Search completed Successfully");		
 					logger = extent.startTest("passTest");
-				    Assert.assertTrue(true); 
-				    logger.log(LogStatus.PASS, "Login Testcases Passed");
-				    method.Takescreenshot();
+					Assert.assertTrue(true); 
+					logger.log(LogStatus.PASS, "Product Search completed Successfully");
+				    
 				}
 				
-				catch (Exception e) {			
-					e.printStackTrace();
-				}
-							
-			    
-		}
 			
 	   }
 	   

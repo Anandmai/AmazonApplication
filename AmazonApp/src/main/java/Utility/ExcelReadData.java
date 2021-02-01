@@ -12,12 +12,14 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
  
-public class ExcelReadData {
+public class ExcelReadData extends Utility.Resusablemethods {
 	
 	
 	public static Map<String,  Map<String, String>> setMapData() throws IOException {
+		 
+	
  
-		  String path = "E:\\New folder\\AmazonApp\\src\\TestData.xlsx\\";
+		  String path = properties.getProperty("Path_TestData");
 		  
 		  FileInputStream fis = new FileInputStream(path);
 	
@@ -49,18 +51,19 @@ public class ExcelReadData {
 			  dataMap.put(key, value);
 				  
 			  //Putting dataMap to excelFileMap
-			  excelFileMap.put("TestData", dataMap);
+			  excelFileMap.put(properties.getProperty("File_TestData"), dataMap);
 		  }
 		  
 		 //Returning excelFileMap
-		return excelFileMap;
- 
+			return excelFileMap;
+		
+	
 	}
 	
 	//Method to retrieve value
 	public static String getMapData(String key) throws IOException{
  
-	Map<String, String> m = setMapData().get("TestData");
+	Map<String, String> m = setMapData().get(properties.getProperty("File_TestData"));
 		String value = m.get(key);
 		
 		return value;
